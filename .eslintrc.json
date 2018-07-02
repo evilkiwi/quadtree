@@ -1,0 +1,24 @@
+{
+    "root": true,
+    "extends": "eslint:recommended",
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "rules": {
+        "eqeqeq": ["error", "always"],
+        "quotes": ["error", "single"],
+        "arrow-spacing": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-template": "error",
+        "no-unused-vars": ["error", { "args": "none" }],
+        "no-console": "off"
+    },
+    "globals": {
+        "absPath": true,
+        "include": true,
+        "map": true,
+        "shared": true
+    }
+}

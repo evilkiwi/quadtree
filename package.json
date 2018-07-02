@@ -1,0 +1,14 @@
+{
+    "name": "@oyed/quadtree",
+    "description": "A simple, efficient Quadtree system.",
+    "homepage": "https://oyed.io",
+    "author": "OYED (https://oyed.io)",
+    "version": "1.0.0",
+    "main": "lib/node.js",
+    "bugs": {
+        "url": "https://github.com/oyed/quadtree/issues",
+        "email": "tom@mosey.io"
+    },
+    "license": "Apache-2.0",
+    "repository": "https://github.com/oyed/quadtree"
+}
