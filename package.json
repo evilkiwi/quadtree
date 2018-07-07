@@ -3,7 +3,7 @@
     "description": "A simple, efficient Quadtree system.",
     "homepage": "https://oyed.io",
     "author": "OYED (https://oyed.io)",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "lib/node.js",
     "bugs": {
         "url": "https://github.com/oyed/quadtree/issues",
