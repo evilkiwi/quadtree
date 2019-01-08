@@ -13,9 +13,12 @@ Whilst this library isn't written specifically for games and can be used for any
 npm install --save @oyed/quadtree
 ```
 
-## TODO
+## Demo
 
-- Add Object tracking (So that there is no need to re-insert objects every frame for dynamic trees)
+I have created a [demo repo](https://github.com/oyed/quadtree-demo) that you can use here:
+
+- [Traditional, non-quadtree collision checking](https://quadtree.oyed.io/#bad)
+- [Quadtree-based collision checking](https://quadtree.oyed.io/)
 
 ## Explanation
 
