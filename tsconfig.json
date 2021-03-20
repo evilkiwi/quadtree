@@ -6,7 +6,7 @@
         },
         "outDir": "./lib/",
         "strict": true,
-        "module": "es2015",
+        "module": "commonjs",
         "declaration": true,
         "target": "es5"
     },

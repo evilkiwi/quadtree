@@ -1,8 +1,8 @@
 import { Options, Rect } from './types';
 
-export default class Node<T extends Rect> {
+export class Quadtree<T extends Rect> {
     options: Required<Options>;
-    private children: Node<T>[] = [];
+    private children: Quadtree<T>[] = [];
     private objects: T[] = [];
     private parent = false;
     private total = 0;
@@ -104,7 +104,7 @@ export default class Node<T extends Rect> {
         const width = this.options.width / 2;
         const height = this.options.height / 2;
 
-        this.children[0] = new Node({
+        this.children[0] = new Quadtree({
             ...this.options,
             level,
             x: this.options.x,
@@ -113,7 +113,7 @@ export default class Node<T extends Rect> {
             height,
         });
 
-        this.children[1] = new Node({
+        this.children[1] = new Quadtree({
             ...this.options,
             level,
             x: this.options.x + width,
@@ -122,7 +122,7 @@ export default class Node<T extends Rect> {
             height,
         });
 
-        this.children[2] = new Node({
+        this.children[2] = new Quadtree({
             ...this.options,
             level,
             x: this.options.x,
@@ -131,7 +131,7 @@ export default class Node<T extends Rect> {
             height,
         });
 
-        this.children[3] = new Node({
+        this.children[3] = new Quadtree({
             ...this.options,
             level,
             x: this.options.x + width,
