@@ -1,24 +1,18 @@
-# Quadtree
+<div align="center">
+    <a href="https://www.npmjs.com/package/@oyed/quadtree" target="_blank">
+        <img src="https://img.shields.io/npm/v/@oyed/quadtree?style=flat-square" alt="NPM" />
+    </a>
+    <img src="https://img.shields.io/npm/l/@oyed/quadtree?style=flat-square" alt="Apache-2.0" />
+    <h3>Quadtree</h3>
+</div>
 
-[![Dependencies](https://img.shields.io/david/oyed/quadtree.svg?style=flat-square)](https://david-dm.org/oyed/quadtree)
-[![License](https://img.shields.io/github/license/oyed/quadtree.svg?style=flat-square)](https://github.com/oyed/quadtree/blob/master/LICENSE)
-
-Quadtrees are a method of splitting a game world in to separate nodes in order to increase the performance of collision-based operations.
-
-Whilst this library isn't written specifically for games and can be used for any quadtree-like system (Dynamic or static), I'll focus on documentation being for gamedev related purposes.
+A quadtree is a method of splitting a game world in to separate nodes in order to increase the performance of collision-based operations.
 
 ## Installation
 
 ```
 npm install --save @oyed/quadtree
 ```
-
-## Demo
-
-I have created a [demo repo](https://github.com/oyed/quadtree-demo) that you can use here:
-
-- [Traditional, non-quadtree collision checking](https://quadtree.oyed.io/#bad)
-- [Quadtree-based collision checking](https://quadtree.oyed.io/)
 
 ## Explanation
 
