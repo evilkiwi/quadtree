@@ -1,14 +1,34 @@
 {
     "name": "@oyed/quadtree",
+    "version": "1.1.0",
     "description": "A simple, efficient Quadtree system.",
-    "homepage": "https://oyed.io",
-    "author": "OYED (https://oyed.io)",
-    "version": "1.0.2",
-    "main": "lib/node.js",
-    "bugs": {
-        "url": "https://github.com/oyed/quadtree/issues",
-        "email": "tom@mosey.io"
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": ["/lib"],
+    "license": "GPL-3.0-only",
+    "author": {
+        "name": "OYED",
+        "url": "https://oyed.dev"
     },
-    "license": "Apache-2.0",
-    "repository": "https://github.com/oyed/quadtree"
+    "scripts": {
+        "build": "tsc",
+        "release": "yarn build && npm publish --access public"
+    },
+    "homepage": "https://github.com/oyed/quadtree",
+    "bugs": {
+        "url": "https://github.com/oyed/quadtree/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oyed/quadtree.git"
+    },
+    "keywords": [
+        "quadtree",
+        "physics",
+        "collision",
+        "game"
+    ],
+    "devDependencies": {
+        "typescript": "^4.2.3"
+    }
 }
