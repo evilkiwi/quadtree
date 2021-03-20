@@ -1,6 +1,6 @@
 {
     "name": "@oyed/quadtree",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A simple, efficient Quadtree system.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
