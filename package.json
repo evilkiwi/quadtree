@@ -1,34 +1,45 @@
 {
-    "name": "@oyed/quadtree",
-    "version": "2.0.0",
-    "description": "A simple, efficient Quadtree system.",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "files": ["/lib"],
+    "name": "@casthub/quadtree",
+    "version": "1.0.0",
+    "description": "A simple, efficient Quadtree system",
+    "files": ["build"],
+    "module": "./build/index.es.js",
+    "types": "./build/src/index.d.ts",
     "license": "GPL-3.0-only",
     "author": {
-        "name": "OYED",
-        "url": "https://oyed.dev"
+        "name": "CastHub Limited",
+        "url": "https://casthub.app",
+        "email": "support@casthub.app"
     },
-    "scripts": {
-        "build": "tsc",
-        "release": "yarn build && npm publish --access public"
-    },
-    "homepage": "https://github.com/oyed/quadtree",
+    "homepage": "https://github.com/casthub/quadtree",
     "bugs": {
-        "url": "https://github.com/oyed/quadtree/issues"
+        "url": "https://github.com/casthub/quadtree/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/oyed/quadtree.git"
+        "url": "git+https://github.com/casthub/quadtree.git"
     },
     "keywords": [
-        "quadtree",
+        "typescript",
         "physics",
-        "collision",
-        "game"
+        "tree"
     ],
+    "scripts": {
+        "clean": "rimraf build",
+        "prepack": "yarn build",
+        "build": "yarn clean && yarn compile",
+        "compile": "vite build",
+        "dev": "vite build --watch"
+    },
     "devDependencies": {
-        "typescript": "^4.2.3"
+        "@vitejs/plugin-vue": "^1.2.5",
+        "@vue/compiler-sfc": "^3.1.5",
+        "async-validator": "^3.5.2",
+        "rimraf": "^3.0.2",
+        "tslib": "^2.3.0",
+        "typescript": "^4.3.5",
+        "vite": "^2.4.3",
+        "vite-plugin-dts": "^0.5.3",
+        "vue": "next"
     }
 }
