@@ -1,5 +1,5 @@
 {
-    "name": "@casthub/quadtree",
+    "name": "@tnotifier/quadtree",
     "version": "1.0.0",
     "description": "A simple, efficient Quadtree system",
     "files": ["build"],
@@ -8,16 +8,16 @@
     "license": "GPL-3.0-only",
     "author": {
         "name": "CastHub Limited",
-        "url": "https://casthub.app",
-        "email": "support@casthub.app"
+        "url": "https://tnotifier.app",
+        "email": "support@tnotifier.app"
     },
-    "homepage": "https://github.com/casthub/quadtree",
+    "homepage": "https://github.com/tnotifier/quadtree",
     "bugs": {
-        "url": "https://github.com/casthub/quadtree/issues"
+        "url": "https://github.com/tnotifier/quadtree/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/casthub/quadtree.git"
+        "url": "git+https://github.com/tnotifier/quadtree.git"
     },
     "keywords": [
         "typescript",

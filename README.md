@@ -1,11 +1,11 @@
 <div align="center">
-    <a href="https://www.npmjs.com/package/@casthub/quadtree" target="_blank">
-        <img src="https://img.shields.io/npm/v/@casthub/quadtree?style=flat-square" alt="NPM" />
+    <a href="https://www.npmjs.com/package/@tnotifier/quadtree" target="_blank">
+        <img src="https://img.shields.io/npm/v/@tnotifier/quadtree?style=flat-square" alt="NPM" />
     </a>
     <a href="https://discord.gg/XMrHXtN" target="_blank">
         <img src="https://img.shields.io/discord/123906549860139008?color=7289DA&label=discord&logo=discord&logoColor=FFFFFF&style=flat-square" alt="Discord" />
     </a>
-    <img src="https://img.shields.io/npm/l/@casthub/quadtree?style=flat-square" alt="Apache-2.0" />
+    <img src="https://img.shields.io/npm/l/@tnotifier/quadtree?style=flat-square" alt="Apache-2.0" />
     <h3>Quadtree</h3>
 </div>
 
@@ -16,11 +16,11 @@ A quadtree is a method of splitting a game world in to separate nodes in order t
 This package is available via NPM:
 
 ```bash
-yarn add @casthub/quadtree
+yarn add @tnotifier/quadtree
 
 # or
 
-npm install @casthub/quadtree
+npm install @tnotifier/quadtree
 ```
 
 ## Usage
