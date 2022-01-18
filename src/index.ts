@@ -1,4 +1,4 @@
-import { Options, Rect } from './types';
+import type { Options, Rect } from './types';
 
 export class Quadtree<T extends Rect> {
     options: Required<Options>;
@@ -35,7 +35,7 @@ export class Quadtree<T extends Rect> {
         return objects;
     }
 
-    insertAll(objects: T[]): void {
+    insertAll(objects: T[]) {
         const total = objects.length;
 
         for (let i = 0; i < total; i++) {
@@ -43,7 +43,7 @@ export class Quadtree<T extends Rect> {
         }
     }
 
-    insert(object: T): void {
+    insert(object: T) {
         if (
             !this.parent &&
             this.total >= this.options.max_objects &&
@@ -79,21 +79,21 @@ export class Quadtree<T extends Rect> {
         this.total++;
     }
 
-    clear(): void {
+    clear() {
         this.children = [];
         this.objects = [];
         this.total = 0;
         this.parent = false;
     }
 
-    inside(box: Rect): boolean {
+    inside(box: Rect) {
         return this.options.x <= box.x + box.width &&
             box.x <= this.options.x + this.options.width &&
             this.options.y <= box.y + box.height &&
             box.y <= this.options.y + this.options.height;
     }
 
-    private split(): void {
+    private split() {
         if (this.parent) {
             return;
         }

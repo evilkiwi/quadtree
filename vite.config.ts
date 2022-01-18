@@ -1,4 +1,3 @@
-import vue from '@vitejs/plugin-vue';
 import { join, resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -6,7 +5,6 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
     root: __dirname,
     plugins: [
-        vue(),
         dts({
             outputDir: join(__dirname, 'build'),
             tsConfigFilePath: join(__dirname, 'tsconfig.json'),
@@ -38,8 +36,8 @@ export default defineConfig({
         lib: {
             entry: join('src', 'index.ts'),
             fileName: 'index',
-            name: 'Form',
-            formats: ['es'],
+            name: 'Quadtree',
+            formats: ['es', 'cjs'],
         },
         rollupOptions: {
             external: ['vue'],
