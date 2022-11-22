@@ -1,3 +1,8 @@
+# 1.0.3 (2022-11-22)
+
+- Move back to Evil Kiwi (`@evilkiwi/astar`)
+- Update dependencies
+
 # 1.0.2 (2022-09-27)
 
 - Moved to OYED `@oyed/tree`
