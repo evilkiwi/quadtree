@@ -1,145 +1,143 @@
 import type { Options, Rect } from './types';
 
 export class Quadtree<T extends Rect> {
-    options: Required<Options>;
-    private children: Quadtree<T>[] = [];
-    private objects: T[] = [];
-    private parent = false;
-    private total = 0;
+  private children: Quadtree<T>[] = [];
+  options: Required<Options>;
+  private objects: T[] = [];
+  private parent = false;
+  private total = 0;
 
-    constructor(options: Options) {
-        this.options = {
-            level: 0,
-            x: 0,
-            y: 0,
-            ...options,
-        };
+  constructor(options: Options) {
+    this.options = {
+      level: 0,
+      x: 0,
+      y: 0,
+      ...options,
+    };
+  }
+
+  retrieve(box: Rect): T[] {
+    let objects: T[] = [];
+
+    if (this.options.level === 0 || this.inside(box)) {
+      if (!this.parent) {
+        objects = this.objects;
+      } else {
+        objects = [
+          ...this.children[0].retrieve(box),
+          ...this.children[1].retrieve(box),
+          ...this.children[2].retrieve(box),
+          ...this.children[3].retrieve(box),
+        ];
+      }
     }
 
-    retrieve(box: Rect): T[] {
-        let objects: T[] = [];
+    return objects;
+  }
 
-        if (this.options.level === 0 || this.inside(box)) {
-            if (!this.parent) {
-                objects = this.objects;
-            } else {
-                objects = [
-                    ...this.children[0].retrieve(box),
-                    ...this.children[1].retrieve(box),
-                    ...this.children[2].retrieve(box),
-                    ...this.children[3].retrieve(box),
-                ];
-            }
-        }
+  insertAll(objects: T[]) {
+    const total = objects.length;
 
-        return objects;
+    for (let i = 0; i < total; i++) {
+      this.insert(objects[i]);
+    }
+  }
+
+  insert(object: T) {
+    if (!this.parent && this.total >= this.options.max_objects && this.options.level < this.options.max_depth) {
+      this.split();
+      this.insertAll(this.objects);
+      this.objects = [];
+      this.total = 0;
     }
 
-    insertAll(objects: T[]) {
-        const total = objects.length;
+    if (this.parent) {
+      if (this.children[0].inside(object)) {
+        this.children[0].insert(object);
+      }
 
-        for (let i = 0; i < total; i++) {
-            this.insert(objects[i]);
-        }
+      if (this.children[1].inside(object)) {
+        this.children[1].insert(object);
+      }
+
+      if (this.children[2].inside(object)) {
+        this.children[2].insert(object);
+      }
+
+      if (this.children[3].inside(object)) {
+        this.children[3].insert(object);
+      }
+
+      return;
     }
 
-    insert(object: T) {
-        if (
-            !this.parent &&
-            this.total >= this.options.max_objects &&
-            this.options.level < this.options.max_depth
-        ) {
-            this.split();
-            this.insertAll(this.objects);
-            this.objects = [];
-            this.total = 0;
-        }
+    this.objects[this.total] = object;
+    this.total++;
+  }
 
-        if (this.parent) {
-            if (this.children[0].inside(object)) {
-                this.children[0].insert(object);
-            }
+  clear() {
+    this.children = [];
+    this.objects = [];
+    this.total = 0;
+    this.parent = false;
+  }
 
-            if (this.children[1].inside(object)) {
-                this.children[1].insert(object);
-            }
+  inside(box: Rect) {
+    return (
+      this.options.x <= box.x + box.width &&
+      box.x <= this.options.x + this.options.width &&
+      this.options.y <= box.y + box.height &&
+      box.y <= this.options.y + this.options.height
+    );
+  }
 
-            if (this.children[2].inside(object)) {
-                this.children[2].insert(object);
-            }
-
-            if (this.children[3].inside(object)) {
-                this.children[3].insert(object);
-            }
-
-            return;
-        }
-
-        this.objects[this.total] = object;
-        this.total++;
+  private split() {
+    if (this.parent) {
+      return;
     }
 
-    clear() {
-        this.children = [];
-        this.objects = [];
-        this.total = 0;
-        this.parent = false;
-    }
+    this.parent = true;
 
-    inside(box: Rect) {
-        return this.options.x <= box.x + box.width &&
-            box.x <= this.options.x + this.options.width &&
-            this.options.y <= box.y + box.height &&
-            box.y <= this.options.y + this.options.height;
-    }
+    const level = this.options.level + 1;
+    const width = this.options.width / 2;
+    const height = this.options.height / 2;
 
-    private split() {
-        if (this.parent) {
-            return;
-        }
+    this.children[0] = new Quadtree({
+      ...this.options,
+      level,
+      x: this.options.x,
+      y: this.options.y,
+      width,
+      height,
+    });
 
-        this.parent = true;
+    this.children[1] = new Quadtree({
+      ...this.options,
+      level,
+      x: this.options.x + width,
+      y: this.options.y,
+      width,
+      height,
+    });
 
-        const level = this.options.level + 1;
-        const width = this.options.width / 2;
-        const height = this.options.height / 2;
+    this.children[2] = new Quadtree({
+      ...this.options,
+      level,
+      x: this.options.x,
+      y: this.options.y + height,
+      width,
+      height,
+    });
 
-        this.children[0] = new Quadtree({
-            ...this.options,
-            level,
-            x: this.options.x,
-            y: this.options.y,
-            width,
-            height,
-        });
-
-        this.children[1] = new Quadtree({
-            ...this.options,
-            level,
-            x: this.options.x + width,
-            y: this.options.y,
-            width,
-            height,
-        });
-
-        this.children[2] = new Quadtree({
-            ...this.options,
-            level,
-            x: this.options.x,
-            y: this.options.y + height,
-            width,
-            height,
-        });
-
-        this.children[3] = new Quadtree({
-            ...this.options,
-            level,
-            x: this.options.x + width,
-            y: this.options.y + height,
-            width,
-            height,
-        });
-    }
+    this.children[3] = new Quadtree({
+      ...this.options,
+      level,
+      x: this.options.x + width,
+      y: this.options.y + height,
+      width,
+      height,
+    });
+  }
 }
 
 export * from './types';

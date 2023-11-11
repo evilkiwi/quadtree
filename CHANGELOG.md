@@ -1,3 +1,8 @@
+# 1.1.0 (2023-11-11)
+
+- Update repo structure
+- Update dependencies
+
 # 1.0.3 (2022-11-22)
 
 - Move back to Evil Kiwi (`@evilkiwi/astar`)
